@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Trash, Star } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
 import { useEffect } from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ProductsList = () => {
 	const { deleteProduct, toggleFeaturedProduct, products,fetchAllProducts,loading  } = useProductStore((state) => ({
@@ -16,7 +17,7 @@ const ProductsList = () => {
 	  }, [fetchAllProducts]);
 	
 	  if (loading) {
-		return <div>Loading...</div>;
+		return <LoadingSpinner/>
 	  }
 
 	console.log("products", products);

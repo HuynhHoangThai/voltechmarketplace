@@ -1,6 +1,8 @@
 import Coupon from "../models/coupon.model.js";
 import Order from "../models/order.model.js";
+
 import { stripe } from "../lib/stripe.js";
+
 
 export const createCheckoutSession = async (req, res) => {
 	try {
@@ -13,7 +15,7 @@ export const createCheckoutSession = async (req, res) => {
 		let totalAmount = 0;
 
 		const lineItems = products.map((product) => {
-			const amount = Math.round(product.price * 100); // stripe wants u to send in the format of cents
+			const amount = Math.round(product.price * 100); 
 			totalAmount += amount * product.quantity;
 
 			return {
@@ -90,7 +92,6 @@ export const checkoutSuccess = async (req, res) => {
 					}
 				);
 			}
-
 			// create a new Order
 			const products = JSON.parse(session.metadata.products);
 			const newOrder = new Order({
@@ -105,7 +106,6 @@ export const checkoutSuccess = async (req, res) => {
 			});
 
 			await newOrder.save();
-
 			res.status(200).json({
 				success: true,
 				message: "Payment successful, order created, and coupon deactivated if used.",
