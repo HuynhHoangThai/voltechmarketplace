@@ -12,7 +12,7 @@ import paymentRoutes from './routes/payment.route.js';
 import analyticsRoutes from './routes/analystics.route.js';
 
 
-import orderRoutes from './routes/order.route.js';
+import orderRoutes from './routes/orders.route.js';
 
 dotenv.config(); 
 
@@ -24,6 +24,7 @@ app.use(express.json({ limit: "50mb" }));
 const PORT = process.env.PORT || 3000;  
 app.use("/api/auth",authRoutes);
 app.use("/api/products",productRoutes);
+
 
 
 app.use("/api/cart", cartRoutes);
