@@ -27,6 +27,25 @@ const productSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		specifications: {
+			processor: { type: String, required: true }, 
+			ram: { type: String, required: true }, 
+			storage: { type: String, required: true }, 
+			graphicsCard: { type: String }, 
+			screenSize: { type: String }, 
+			resolution: { type: String }, 
+			battery: { type: String }, 
+			weight: { type: String }, 
+			operatingSystem: { type: String }, 
+		},
+		releaseDate: {
+			type: Date,
+		},
+		stockQuantity: {
+			type: Number,
+			default: 0,
+		},
+
 	},
 	{ timestamps: true }
 );
